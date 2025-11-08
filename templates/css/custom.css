@@ -1,0 +1,296 @@
+/* Custom Card Colors */
+
+.nav_name {
+    font-size: 12px;
+}
+
+.m-0 {
+    margin: 0px;
+}
+
+.card-reset {
+    background: #f7f7f7;
+    color: #535151;
+}
+
+.btn-deafult {
+    background: #b9b8b8 !important;
+    color: #000 !important;
+}
+
+.btn-grey {
+    background: #646464 !important;
+    color: #fff !important;
+}
+
+.card-cyan {
+    background: #22a6b3;
+    color: #fff;
+}
+
+.btn-blue {
+    background: #1572e8 !important;
+    border-color: #1572e8 !important;
+    color: #fff !important;
+}
+
+/* Login Bg */
+
+.login_aside_bg {
+    background: url(../assets/img/login-bg-landing.jpg) no-repeat;
+    background-size: cover;
+}
+
+.dt-buttons button {
+    -webkit-appearance: button;
+    background: #1068da !important;
+    border: none !important;
+    color: #fff !important;
+    border-radius: 4px !important;
+    padding: 8px 20px !important;
+}
+
+.dt-buttons button:hover {
+    background: #2078ec !important;
+    cursor: pointer;
+}
+
+div.dataTables_wrapper div.dataTables_filter input {
+    margin-left: 0.5em;
+    display: inline-block;
+    width: auto;
+    border: 1px solid #d7d7d7;
+    padding: 8px 20px;
+    border-radius: 4px;
+}
+
+.dataTables_length {
+    float: left;
+    margin-right: 30px;
+}
+
+.basic-datatables_filter {
+    float: right;
+}
+
+.dt-buttons {
+    float: left;
+}
+
+.sm-roundbtn {
+    height: 1.5rem;
+    min-width: 1.5rem;
+    width: 1.5rem;
+    margin-top: -4px;
+}
+
+.table-responsive>.table-bordered {
+    border: 1px solid #dee2e6 !important;
+}
+
+.stock_alert {
+    height: 200px;
+    overflow: hidden;
+    scrollbar-width: none;
+}
+
+.stock_alert:hover {
+    overflow: scroll;
+    scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+    width: 0.8em;
+    height: 0.8em;
+}
+
+::-webkit-scrollbar-button {
+    background: #ccc;
+}
+
+::-webkit-scrollbar-track-piece {
+    background: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1572e8;
+}
+
+.circles-text {
+/*    font-size: 12px !important;*/
+    font-size: 31.5px !important;
+}
+
+.prf_indicator {
+    height: 390px;
+    overflow: hidden;
+    scrollbar-width: none;
+}
+
+.card-sub2 {
+    display: block;
+    margin: 5px 5px 10px 0;
+    font-size: 1rem;
+    font-weight: bold;
+    background: #dbebff;
+    color: #2a2f5b;
+    padding: 0.85rem 1.5rem;
+    border-radius: 4px;
+    line-height: 1.82;
+}
+
+.card-sub3 {
+    display: block;
+    margin: 5px 0 10px 0;
+    font-size: 1rem;
+    font-weight: bold;
+    background: #dbebff;
+    color: #2a2f5b;
+    padding: 0.85rem 1.5rem;
+    border-radius: 0px;
+    line-height: 1.82;
+    margin: -31px -30px 30px -30px;
+}
+
+.card-sub4 {
+    display: block;
+    margin: 5px 0 10px 0;
+    font-size: 1rem;
+    font-weight: bold;
+    background: #dbebff;
+    color: #2a2f5b;
+    padding: 0.85rem 1.5rem;
+    border-radius: 0px;
+    line-height: 1.82;
+    margin: 30px -30px 30px -30px;
+}
+
+.btn-arrow {
+    color: #d4d4d4;
+    border: 1px solid #d4d4d4 !important;
+}
+
+.card a:hover {
+    text-decoration: none;
+    background: #d9d9d9;
+}
+
+.num_bg {
+    background: #1dad21;
+    padding: 6px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.num_bg2 {
+    background: #f59114;
+    padding: 6px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.num_bg3 {
+    background: #d2eaff;
+    padding: 6px;
+    border-radius: 8px;
+}
+
+.bg-yl {
+    background-color: #f59114;
+    color: #fff;
+    border: 1px solid #f59114;
+}
+
+.badge-green {
+    background: #08ae98;
+    border: 1px #08ae98 solid;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.truncate_text {
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    width: 250px
+}
+
+.truncate_text_small {
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    width: 150px
+}
+
+.small_text {
+    display: -webkit-box;
+    font-size: 12px;
+    width: 250px
+}
+
+.pass_criteria {
+    width: 270px;
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 4px;
+    background: #f7f7f7;
+}
+
+.pass_criteria ul {
+    padding: 10px;
+}
+
+.pass_criteria li {
+    list-style: none;
+    font-style: italic;
+    color: red;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgb(234 242 251) !important;
+}
+
+/* Report Print */
+
+@media print {
+    .dt-buttons {
+        display: none;
+    }
+}
+
+th, td {
+    white-space: nowrap;
+}
+div.dataTables_wrapper {
+    width: 1000px;
+    margin: 0 auto;
+}
+.dataTables_wrapper {
+    width: 100% !important;
+}
+
+.vhr {
+    border-left: 1px solid lightgray;
+    margin-left: 20px;
+    margin-right: -30px;
+}
+
+.card-category {
+    font-size: 20px;
+}
+
+.reqd {
+    color: red !important;
+}
+
+
+
+
+

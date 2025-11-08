@@ -1,0 +1,232 @@
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+
+$district = json_decode($district);
+$category = json_decode($category);
+$type = json_decode($type);
+$block = json_decode($block);
+$approved = json_decode($approved);
+$selected = json_decode($selected);
+// print_r($approved); exit;
+?>
+<div class="container">
+    <div class="panel-header bg-primary-gradient">
+        <div class="page-inner py-5">
+            <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+                <div>
+                    <h2 class="text-white pb-2 fw-bold"><?= $heading; ?></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php echo form_open('capex/bridge_tender'); ?>
+    <div class="page-inner mt--5">
+        <div class="row mt--2">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>District *</label>
+                                    <select id="district_id" name="district_id" class="form-control dropdown">
+                                        <?php
+                                        echo '<option value="0">--Select District--</option>';
+                                        foreach ($district as $row) {
+                                            $_selected = ($selected->district_id > 0 && $selected->district_id == $row->id) ? 'selected' : '';
+                                            echo '<option value="' . $row->id . '" ' . $_selected . '>' . $row->name . '</option>';
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Funding By *</label>
+                                    <select id="category_id" name="category_id" class="form-control dropdown">
+                                        <?php
+                                        echo '<option value="">--Select Fund--</option>';
+                                        foreach ($category as $row) {
+                                            $_selected = ($selected->category_id > 0 && $selected->category_id == $row->id) ? 'selected' : '';
+                                            echo '<option value="' . $row->id . '" ' . $_selected . '>' . $row->name . '</option>';
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Project Type *</label>
+                                    <select id="type_id" name="type_id" class="form-control dropdown" data-live-search="true">
+                                        <option value="">--Select Project Type--</option>
+                                        <?php
+                                        foreach ($type as $row) {
+                                            $_selected = $row->id == $selected->type_id ? 'selected' : '';
+                                            echo '<option value="' . $row->id . '" ' . $_selected . '>' . $row->name . '</option>';
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2 mt-4 text-right">
+                                <div class="form-group">
+                                    <button type="submit" id="search_bridge_tender" name="search_bridge_tender" class="btn btn-primary">
+                                        <i class="fa fa-search"></i> &nbsp;
+                                        <span>SEARCH</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php echo form_close(); ?>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title"><?= $subheading ?></h2>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="tbl" class="display table table-bordered table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>District</th>
+                                <th>Assembly Constituency</th>
+                                <th>Block</th>
+                                <th>Scheme ID</th>
+                                <th>Work Name</th>
+                                <th>Length (KM)</th>
+                                <th>Agency</th>
+                                <th>Vetted Amount</th>
+                                <th>Tender Number</th>
+                                <th>Tender Publication Date</th>
+                                <th>Tender Status</th>
+                                <th>BID Closing Date</th>
+                                <th>BID Opening date</th>
+                                <th>Evaluation Status</th>
+                                <th>BID Opening Status</th>
+                                <th>BID Matured Status</th>
+                                <?php if ($role_id != 12) { ?>
+                                    <th>Action</th>
+                                <?php } ?>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $i = 1;
+                            foreach ($approved as $row) {
+                                echo '<tr>';
+                                echo '<td>' . $i++ . '</td>';
+                                echo '<td>' . $row->district . '</td>';
+                                echo '<td>' . $row->ac . '</td>';
+                                echo '<td>' . $row->block . '</td>';
+                                echo '<td>' . $row->scheme_id . '</td>';
+                                echo '<td><p class="truncate_text" data-toggle="tooltip" data-placement="bottom" title="' . $row->name . '">' . $row->name . '</p></td>';
+                                echo '<td>' . $row->length . '</td>';
+                                echo '<td>' . $row->agency . '</td>';
+                                echo '<td>' . $row->sanctioned_cost . '</td>';
+                                echo '<td>' . $row->tender_number . '</td>';
+                                echo '<td>' . $row->tender_publication_date . '</td>';
+                                echo '<td>' . ($row->tender_status == 0 ? 'Not Started' : ($row->tender_status == 1 ? 'On Progress' : ($row->tender_status == 2 ? 'Completed' : 'Retendering'))) . '</td>';
+                                echo '<td>' . $row->bid_closing_date . '</td>';
+                                echo '<td>' . $row->bid_opeaning_date . '</td>';
+                                echo '<td>' . ($row->evaluation_status == 0 ? 'No' : ($row->evaluation_status == 1 ? 'Yes' : '')) . '</td>';
+                                echo '<td>' . ($row->bid_opening_status == 0 ? 'No' : ($row->bid_opening_status == 1 ? 'Yes' : '')) . '</td>';
+                                echo '<td>' . ($row->bid_matured_status == 0 ? 'No' : ($row->bid_matured_status == 1 ? 'Yes' : '')) . '</td>';
+                                if ($role_id != 12) {
+                                    echo '<td><p style="margin:0px; width: 90px"><button data-toggle="tooltip" data-placement="bottom"  class="btn btn-icon btn-round btn-sm btn-primary" onclick="edit_tender(' . $row->id . ',' . $row->tender_status . ')"  title="Edit"><i class="fas fa-pen pointer"></i></button></p>
+                                                </td>';
+                                }
+                                echo '</tr>';
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php include_once 'tender_benefitted_modal.php'; ?>
+</div>
+<script src="<?= base_url('templates/js/capex.js') ?>"></script> 
+<script>
+    $(document).ready(function () {
+        $('#tbl').DataTable({
+            dom: 'lBfrtip',
+            processing: true,
+            scrollY: '450px',
+            scrollX: true,
+            scrollCollapse: true,
+            paging: false,
+            responsive: true,
+            stateSave: true,
+            colReorder: true,
+            fixedColumns: {
+                left: 2,
+                right: 1
+            },
+            buttons: [
+                {
+                    extend: 'excel',
+                    text: 'Excel',
+                    filename: 'ridf_tender_list_' + $.now(),
+                    title: 'RIDF TENDER LIST',
+                    footer: true,
+                    exportOptions: {
+                        columns: ':not(.not-export)'
+                    },
+                    customize: function (xlsx) {
+                        var sheet = xlsx.xl.worksheets['sheet1.xml'];
+                        $('row c', sheet).attr('s', '25');
+                    }
+                },
+                {
+                    extend: 'print',
+                    text: 'Print',
+                    title: '',
+                    footer: true,
+                    exportOptions: {
+                        columns: ':not(.not-export)'
+                    },
+                    customize: function(win) {
+                        // Remove default title
+                        $(win.document.body).find('h1').remove();
+
+                        // Add header: logo + title in one line (left aligned)
+                        $(win.document.body).prepend(
+                            '<div style="display:flex; align-items:center; margin-bottom:15px;">' +
+                            '<img src="' + baseURL + '/templates/img/pathashree.jpg" ' +
+                            'style="height:45px; margin-right:12px;" />' +
+                            '<h2 style="margin:0; font-size:13pt; font-weight:bold;">' +
+                            'RURAL ROADS (2025) – BRIDGE TENDER LIST' +
+                            '</h2>' +
+                            '</div>'
+                        );
+
+                        $(win.document.body).find('table')
+                            .addClass('compact')
+                            .css('font-size', '10pt')
+                            .css('border-collapse', 'collapse')
+                            .css('width', '100%');
+                        $(win.document.body).find('table thead tr th')
+                            .css('background-color', '#f2f2f2')
+                            .css('text-align', 'center')
+                            .css('padding', '6px');
+
+                        $(win.document.body).find('table tbody tfoot tr td')
+                            .css('padding', '4px 6px')
+                            .css('text-align', 'center');
+                    }
+                }
+            ]
+        });
+        $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
+            $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
+        });
+    });
+</script>

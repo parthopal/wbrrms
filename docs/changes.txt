@@ -1,0 +1,28 @@
+UPDATE `menu` SET `sequence` = '6' WHERE `menu`.`id` = 87;
+
+UPDATE `menu` SET `sequence` = '8' WHERE `menu`.`id` = 26;
+
+UPDATE `menu` SET `sequence` = '9' WHERE `menu`.`id` = 2;
+
+INSERT INTO `menu` (`id`, `created`, `name`, `level_id`, `class`, `link`, `parent_id`, `sequence`, `has_child`, `isactive`, `lastupdated`) VALUES (NULL, '2024-08-19', 'Bridge', '0', 'fas fa-file-contract', '#', '0', '7', '1', '1', '2024-08-19 12:36:43');
+
+INSERT INTO `menu` (`id`, `created`, `name`, `level_id`, `class`, `link`, `parent_id`, `sequence`, `has_child`, `isactive`, `lastupdated`) VALUES (NULL, '2024-08-19', 'Overview', '1', '', 'bridge/overview', '119', '1', '0', '1', '2023-11-27 10:54:35');
+
+INSERT INTO `menu` (`id`, `created`, `name`, `level_id`, `class`, `link`, `parent_id`, `sequence`, `has_child`, `isactive`, `lastupdated`) VALUES (NULL, '2024-08-19', 'Master', '1', '', 'bridge', '119', '2', '0', '1', '2023-11-27 10:54:35');
+
+INSERT INTO `menu` (`id`, `created`, `name`, `level_id`, `class`, `link`, `parent_id`, `sequence`, `has_child`, `isactive`, `lastupdated`) VALUES (NULL, '2024-08-19', 'Inspection', '1', '', 'bridge/inspection', '119', '3', '0', '1', '2023-11-27 10:54:35');
+
+
+
+bridge, bridge_image, bridge_inspection
+
+
+bridge_ownership
+bridge_foundation
+bridge_superstructure
+bridge_substructure_type
+bridge_substructure_material
+bridge_condition
+bridge_type
+bridge_scheme
+bridge_category

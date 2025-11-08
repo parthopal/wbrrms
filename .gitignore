@@ -1,0 +1,15 @@
+# Ignore logs
+application/logs/
+captcha/*
+uploads/*   
+*.log
+*.log.txt
+
+# Ignore database dumps
+db/*.sql
+*.sql
+
+# Ignore OS/IDE junk
+.DS_Store
+Thumbs.db
+*.swp
